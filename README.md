@@ -10,7 +10,7 @@ The purpose of this project was to scrape data from three different sites and co
   - [Galaxy Facts](https://galaxyfacts-mars.com)
   - [Astropedia Mars Hemispheres](https://marshemispheres.com)
 
-- Sofware:
+- Sofware
   - Python 3.7.10
   - Jupyter Notebook 6.3.0
   - Flask 1.1.2
