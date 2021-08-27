@@ -18,14 +18,15 @@ def scrape_all():
         "news_paragraph": news_paragraph,
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
-        "last modified": dt.datetime.now()
+        "last modified": dt.datetime.now(),
+        "hemispheres": hem_data(browser)
     }
 
     # Stop webdriver and return data
     browser.quit()
     return data
 
-# ### Featured Article
+### Featured Article
 
 def mars_news(browser):
     # Visit the Mars/Nasa news site
@@ -55,7 +56,7 @@ def mars_news(browser):
 
     return news_title, news_p
 
-# ### Featured Images
+### Featured Images
 
 def featured_image(browser):
 
@@ -83,7 +84,7 @@ def featured_image(browser):
 
     return img_url
 
-# ### Mars Facts
+### Mars Facts
 
 def mars_facts():
     try:
@@ -100,6 +101,35 @@ def mars_facts():
     # Convert dataframe into HTML format, add bootstrap
     return df.to_html(classes='table table-striped')
 
+### Mars Hemispheres
+
+def hem_data(browser):
+    # D1: Scrape High-Resolution Mars’ Hemisphere Images and Titles
+    ## Hemispheres
+    # 1. Use browser to visit the URL 
+    url = 'https://marshemispheres.com/'
+    browser.visit(url)
+
+    # 2. Create a list to hold the images and titles.
+    hemisphere_image_urls = []
+
+    # 3. Write code to retrieve the image urls and titles for each hemisphere.    
+    for x in range(0, 4):
+        full_image_elem = browser.links.find_by_partial_text('Enhanced')[x].click()
+        html = browser.html
+        html_soup = soup(html, "html.parser")
+        img_url_part = html_soup.find('li').a['href']
+        img_url = f'{url}{img_url_part}'
+        title = html_soup.find('h2', class_='title').text
+        hemisphere_dict = {'img_url': img_url, 'title': title}
+        hemisphere_image_urls.append(hemisphere_dict)
+        browser.back()
+    
+    # Close the browser after scraping
+    browser.quit()
+    
+    return hemisphere_image_urls
+        
 if __name__ == '__main__':
         # If running as script, print scraped data
         print(scrape_all())
