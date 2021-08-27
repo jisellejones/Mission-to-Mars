@@ -1,5 +1,17 @@
 # Mission-to-Mars
 
-[Nasa news website](https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest)
+## Purpose
+The purpose of this project was to scrape data from three different sites and compile the scraped components onto a new site that will update each time a scrape is applied.
 
-[Mars Planet Science](https://redplanetscience.com/)
+## Resources
+- Data Source
+  - [Mars Planet Science News](https://redplanetscience.com/)
+  - [Nasa Space Images](https://spaceimages-mars.com)
+  - [Galaxy Facts](https://galaxyfacts-mars.com)
+  - [Astropedia Mars Hemispheres](https://marshemispheres.com)
+
+- Sofware:
+  - Python 3.7.10
+  - Jupyter Notebook 6.3.0
+  - Flask 1.1.2
+  - Mongo 5.0.2
