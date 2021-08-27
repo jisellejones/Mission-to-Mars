@@ -15,3 +15,4 @@ The purpose of this project was to scrape data from three different sites and co
   - Jupyter Notebook 6.3.0
   - Flask 1.1.2
   - Mongo 5.0.2
+  - Bootstrap 3.3.7
